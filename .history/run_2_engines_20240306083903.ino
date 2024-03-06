@@ -1,20 +1,3 @@
-Este repositorio será utilizado para implementar o codigo da aplicação da ortese de menbros inferiores:
-
-
-
-Será utilizado Arduino para rodar a aplicação: [arduino.cc](https://www.arduino.cc/en/software)
-
-
-
-```cpp
-#include <Servo.h> //INCLUSÃO DA BIBLIOTECA NECESSÁRIA
-
-// usar servo motor
-const int pinoServo = 6; //PINO DIGITAL UTILIZADO PELO SERVO  
- 
-Servo s; //OBJETO DO TIPO SERVO
-int pos; //POSIÇÃO DO SERVO
-
 uint32_t start, dbStart;
 const byte btn = 3, btn2 = 13, led = 7, led2 = 10, dbTime = 15;
 bool pinState = true,
@@ -26,26 +9,7 @@ bool pinState = true,
      latch = false;
 int ButtonValue = 0;
 int ButtonValue2 = 0;
-
-void walkForward(){
-
- for(pos = 0; pos < 180; pos++){ //PARA "pos" IGUAL A 0, ENQUANTO "pos" MENOR QUE 180, INCREMENTA "pos"
-    s.write(pos); //ESCREVE O VALOR DA POSIÇÃO QUE O SERVO DEVE GIRAR
-    delay(15); //INTERVALO DE 15 MILISSEGUNDOS
-}
-}
-void walkBackward(){
-
-    for(pos = 180; pos >= 0; pos--){ //PARA "pos" IGUAL A 180, ENQUANTO "pos" MAIOR OU IGUAL QUE 0, DECREMENTA "pos"
-    s.write(pos); //ESCREVE O VALOR DA POSIÇÃO QUE O SERVO DEVE GIRAR
-    delay(15); //INTERVALO DE 15 MILISSEGUNDOS
-  }
-  
-}
 void setup() {
-  delay(500);
-  s.attach(pinoServo); //ASSOCIAÇÃO DO PINO DIGITAL AO OBJETO DO TIPO SERVO
-  s.write(0); //INICIA O MOTOR NA POSIÇÃO 0º
   Serial.begin(9600);
   pinMode(btn,INPUT);
   pinMode(led,OUTPUT);
@@ -62,7 +26,6 @@ void loop() {
   if(ButtonValue !=0){
     digitalWrite(led, HIGH);
     //Serial.println(" if");
-    walkBackward();
  
   }
   else{
@@ -74,8 +37,6 @@ void loop() {
    if(ButtonValue2 !=0){
     digitalWrite(led2, HIGH);
     //Serial.println(" if");
-
-    walkForward();
  
   }
   else{
@@ -163,4 +124,3 @@ void loop() {
 
 
 }
-```
