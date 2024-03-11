@@ -46,15 +46,6 @@ void setup() {
 }
 
 void loop() {
-
-    // Lê o valor do Potenciometro
-  int angle = analogRead(0); // na porta A0
-  // Mapeia o valor de 0 a 180 graus
-  angle=map(angle, 0, 1023, 0, 180);
-  // Repassa o angulo ao ServoWrite
-  s.write(angle);
-  // Delay de 15ms para o Servo alcançar a posição
-  delay(15); 
   // XXXXXXXXXXXXXXXXXXXXXXXXX
   
   ButtonValue = digitalRead(btn);
